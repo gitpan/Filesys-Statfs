@@ -1,0 +1,51 @@
+This distribution contains the modules Filesys::Statfs
+
+DESCRIPTION
+Filesys::Statfs provides an interface between
+Perl and the statvs() system call.
+
+SYNOPSIS Filesys::Statfs
+
+use Filesys::Statfs;
+
+	  my($ftype, $bsize, $blocks, $bfree, $bavail,
+             $files, $ffree) = statfs("/tmp");
+
+
+INSTALL
+TO INSTALL RUN:
+	
+	perl Makefile.PL
+	make
+	make test
+	make install
+
+For this module to install and work properly you will need
+to have the statfs() system call on your system. A good way
+to tell if you have it is to look for the sys/statfs.h header
+in your include directory. (Usually /usr/include/)
+
+If there is an error during the 'make', it is
+possible that you do not have statfs() on your system.
+Another possible reason may be that the statfs structure defined
+in statfs.h does not contain one or more of the fields that are
+defined in Statfs.xs.
+
+During the 'make test' test.pl will use statfs()
+to stat the root directory "/". If it fails it will
+report an error, otherwise it will report all the 
+standard fields in the statfs structure. If you
+
+Once installed, run 'perldoc Filesys::Statfs' for more information. 
+
+If you have any problems or questions please email
+me at IGuthrie@aol.com with "Filesys Module" in
+the subject line.
+
+This module will be combined with Filesys::Df in the near future
+to provide more user friendly information.
+
+
+Copyright (c) 2004 Ian Guthrie. All rights reserved.
+               This program is free software; you can redistribute it and/or
+               modify it under the same terms as Perl itself.
